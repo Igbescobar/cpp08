@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:59:25 by igngonza          #+#    #+#             */
-/*   Updated: 2026/02/03 11:59:27 by igngonza         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:48:44 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ unsigned int Span::shortestSpan() const {
     if (numbers.size() < 2)
         throw std::runtime_error("Not enough numbers to find a span");
 
-    std::vector<int> copy(numbers.begin(), numbers.end());
+    std::vector<int> copy(numbers);
     std::sort(copy.begin(), copy.end());
 
-    unsigned int minSpan = static_cast<unsigned int>(copy[1] - copy[0]);
-    for (std::vector<int>::size_type i = 1; i < copy.size() - 1; ++i) {
-        unsigned int span = static_cast<unsigned int>(copy[i + 1] - copy[i]);
+    unsigned int minSpan = copy[1] - copy[0];
+    for (std::vector<int>::iterator it = copy.begin(); it != copy.end() - 1;
+         ++it) {
+        unsigned int span = *(it + 1) - *it;
         if (span < minSpan)
             minSpan = span;
     }
@@ -61,5 +62,10 @@ unsigned int Span::longestSpan() const {
     int minVal = *std::min_element(numbers.begin(), numbers.end());
     int maxVal = *std::max_element(numbers.begin(), numbers.end());
 
-    return static_cast<unsigned int>(maxVal - minVal);
+    return static_cast<unsigned int>(maxVal) -
+           static_cast<unsigned int>(minVal);
+}
+
+std::vector<int> Span::getNumber() const {
+    return this->numbers;
 }

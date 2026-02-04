@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:59:12 by igngonza          #+#    #+#             */
-/*   Updated: 2026/02/03 12:10:51 by igngonza         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:43:03 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ int main() {
         Span largeSpan(SIZE);
 
         for (unsigned int i = 0; i < SIZE; ++i) {
-            largeSpan.addNumber(rand() % 100000000000);
+            largeSpan.addNumber(rand());
+        }
+
+        for (unsigned int i = 0; i < SIZE; i++) {
+            std::cout << largeSpan.getNumber()[i] << std::endl;
         }
 
         std::cout << "Shortest span in largeSpan: " << largeSpan.shortestSpan()
@@ -53,7 +57,7 @@ int main() {
         std::cout << "\nTesting addNumbers() with range" << std::endl;
         std::vector<int> numbers;
         for (int i = 0; i < 5000; ++i) {
-            numbers.push_back(i * 2);
+            numbers.push_back(rand());
         }
 
         Span spRange(5000);
