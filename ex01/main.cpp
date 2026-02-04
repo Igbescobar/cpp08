@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:59:12 by igngonza          #+#    #+#             */
-/*   Updated: 2026/02/04 17:43:03 by igngonza         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:51:29 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ int main() {
 
         for (unsigned int i = 0; i < SIZE; ++i) {
             largeSpan.addNumber(rand());
-        }
-
-        for (unsigned int i = 0; i < SIZE; i++) {
-            std::cout << largeSpan.getNumber()[i] << std::endl;
         }
 
         std::cout << "Shortest span in largeSpan: " << largeSpan.shortestSpan()
